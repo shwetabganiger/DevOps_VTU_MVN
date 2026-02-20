@@ -23,14 +23,40 @@
                 <scope>compile</scope>
             </dependency>
 
-            <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->git
+            <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>7.11.0</version>
                 <scope>test</scope>
             </dependency>
-
         </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                     <artifactId>maven-resources-plugin</artifactId>
+                         <version>3.2.0</version>
+                            <executions>
+                                 <execution>
+                                      <phase>prepare-package</phase>
+                                         <goals>
+                                            <goal>copy-resources</goal>
+                                         </goals>
+                                      <configuration>
+                              <outputDirectory>${project.basedir}/docs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                    <include>**/*</include>
+                                    </includes>
+                                    </resource>
+                                       </resources>
+                                      </configuration>
+                                      </execution>
+                                </executions>
+                </plugin>
+        </plugins>
+    </build>
 </project>
